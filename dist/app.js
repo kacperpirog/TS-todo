@@ -8,21 +8,31 @@
 const taskNameInputElement = document.querySelector("#name");
 const addButtonElement = document.querySelector("button");
 const taskConteinerElement = document.querySelector(".tasks");
-const tasks = ["nakramienia kota", "zrobic coś", "programowac "];
+const tasks = [{
+        name: "nakramienia kota",
+        done: false,
+    }, {
+        name: "zrobic coś",
+        done: true,
+    }, {
+        name: "programowanie",
+        done: false,
+    }
+];
 const render = () => {
     taskConteinerElement.innerHTML = "";
     tasks.forEach((task) => {
         const taskElement = document.createElement("li");
-        taskElement.innerHTML = task;
+        taskElement.innerHTML = task.name;
         taskConteinerElement.appendChild(taskElement);
     });
 };
-const addTask = (task) => {
-    tasks.push(task);
+const addTask = (taskName) => {
+    tasks.push({ name: taskName, done: false });
 };
 addButtonElement.addEventListener("click", (e) => {
     e.preventDefault();
-    tasks.push(taskNameInputElement.value);
+    addTask(taskNameInputElement.value);
     render();
 });
 render();
