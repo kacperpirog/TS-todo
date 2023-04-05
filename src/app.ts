@@ -7,7 +7,8 @@
 // nakramienia kota 
 //zrobic coś
 // programowac 
-
+const taskNameInputElement: HTMLInputElement = document.querySelector("#name")
+const addButtonElement: HTMLButtonElement = document.querySelector("button")
 const taskConteinerElement : HTMLElement = document.querySelector(".tasks")
 
 const tasks: string[] = ["nakramienia kota","zrobic coś", "programowac "]
@@ -19,5 +20,12 @@ const render = () => {
         taskConteinerElement.appendChild(taskElement)
     })
 
+};
+const addTask = (task: string) => {
+    tasks.push(task)
 }
+addButtonElement.addEventListener("click", (e: Event) => {
+    e.preventDefault()
+})
+
 render()
