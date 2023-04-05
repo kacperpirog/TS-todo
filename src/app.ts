@@ -14,6 +14,7 @@ const taskConteinerElement : HTMLElement = document.querySelector(".tasks")
 const tasks: string[] = ["nakramienia kota","zrobic coś", "programowac "]
 
 const render = () => {
+    taskConteinerElement.innerHTML = ""
     tasks.forEach((task) => {
         const taskElement: HTMLElement = document.createElement("li")
         taskElement.innerHTML = task
@@ -26,6 +27,8 @@ const addTask = (task: string) => {
 }
 addButtonElement.addEventListener("click", (e: Event) => {
     e.preventDefault()
+    tasks.push(taskNameInputElement.value)
+    render()
 })
 
 render()

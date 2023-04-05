@@ -10,6 +10,7 @@ const addButtonElement = document.querySelector("button");
 const taskConteinerElement = document.querySelector(".tasks");
 const tasks = ["nakramienia kota", "zrobic coś", "programowac "];
 const render = () => {
+    taskConteinerElement.innerHTML = "";
     tasks.forEach((task) => {
         const taskElement = document.createElement("li");
         taskElement.innerHTML = task;
@@ -21,5 +22,7 @@ const addTask = (task) => {
 };
 addButtonElement.addEventListener("click", (e) => {
     e.preventDefault();
+    tasks.push(taskNameInputElement.value);
+    render();
 });
 render();
