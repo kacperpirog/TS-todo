@@ -1,10 +1,3 @@
-// <li>
-// <label for="task-1">śmieci</label>
-// <input type="checkbox" id="task-1" name="smieci"/>
-// </li>
-// nakramienia kota 
-//zrobic coś
-// programowac 
 const taskNameInputElement = document.querySelector("#name");
 const addButtonElement = document.querySelector("button");
 const taskConteinerElement = document.querySelector(".tasks");
@@ -21,10 +14,16 @@ const tasks = [{
 ];
 const render = () => {
     taskConteinerElement.innerHTML = "";
-    tasks.forEach((task) => {
+    tasks.forEach((task, index) => {
+        //         <li>
+        // <label for="task-1">śmieci</label>
+        // <input type="checkbox" id="task-1" name="smieci"/>
+        // </li>
         const taskElement = document.createElement("li");
-        taskElement.innerHTML = task.name;
-        taskConteinerElement.appendChild(taskElement);
+        const id = `task-${index}`;
+        const labelElement = document.createElement("lable");
+        labelElement.innerHTML = task.name;
+        labelElement.setAttribute("for", id);
     });
 };
 const addTask = (taskName) => {
