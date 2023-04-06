@@ -1,17 +1,20 @@
 const taskNameInputElement = document.querySelector("#name");
 const addButtonElement = document.querySelector("button");
 const taskContainerElement = document.querySelector(".tasks");
-const categories = ["General", "work", "sport", "hobby", "JS"];
+const categories = ["general", "work", "gym", "hobby", "JS"];
 const tasks = [
     {
         name: "nakramienia kota",
         done: false,
+        categoty: "work"
     }, {
         name: "zrobic coś",
         done: true,
+        categoty: "gym",
     }, {
         name: "programowanie",
         done: false,
+        categoty: "JS",
     }
 ];
 const render = () => {
@@ -22,6 +25,9 @@ const render = () => {
         // <input type="checkbox" id="task-1" name="smieci"/>
         // </li>
         const taskElement = document.createElement("li");
+        if (task.categoty) {
+            taskElement.classList.add(task.categoty);
+        }
         const id = `task-${index}`;
         const labelElement = document.createElement("label");
         labelElement.innerHTML = task.name;

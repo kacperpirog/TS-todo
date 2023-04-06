@@ -5,19 +5,23 @@ const taskContainerElement : HTMLElement = document.querySelector(".tasks")
 interface Task {
     name:string;
     done:boolean;
+    categoty?:string;
 }
-const categories:string[] = ["General", "work", "sport","hobby","JS" ]
+const categories:string[] = ["general", "work", "gym","hobby","JS" ]
 
 const tasks:Task[] = [
     {
     name:"nakramienia kota",
     done:false,
-},{
+    categoty:"work"
+   },{
     name:"zrobic coś",
     done:true,
+    categoty:"gym",
 },{
     name:"programowanie",
     done:false,
+    categoty:"JS",
 }
 ]
 
@@ -30,6 +34,10 @@ const render = () => {
 // <input type="checkbox" id="task-1" name="smieci"/>
 // </li>
         const taskElement: HTMLElement = document.createElement("li");
+        if(task.categoty) {
+            taskElement.classList.add(task.categoty)
+        }
+        
         const id: string = `task-${index}`;
 
         const labelElement: HTMLLabelElement = document.createElement("label");
