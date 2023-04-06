@@ -1,10 +1,11 @@
 const taskNameInputElement: HTMLInputElement = document.querySelector("#name")
 const addButtonElement: HTMLButtonElement = document.querySelector("button")
-const taskConteinerElement : HTMLElement = document.querySelector(".tasks")
+const taskContainerElement : HTMLElement = document.querySelector(".tasks")
 
 const tasks:
 {name:string; done:boolean;
-}[] = [{
+}[] = [
+    {
     name:"nakramienia kota",
     done:false,
 },{
@@ -18,7 +19,7 @@ const tasks:
 
 
 const render = () => {
-    taskConteinerElement.innerHTML = "";
+    taskContainerElement.innerHTML = "";
     tasks.forEach((task, index) => {
 //         <li>
 // <label for="task-1">śmieci</label>
@@ -27,9 +28,21 @@ const render = () => {
         const taskElement: HTMLElement = document.createElement("li");
         const id: string = `task-${index}`;
 
-        const labelElement: HTMLLabelElement = document.createElement("lable")
+        const labelElement: HTMLLabelElement = document.createElement("label");
         labelElement.innerHTML = task.name;
-        labelElement.setAttribute("for", id)
+        labelElement.setAttribute("for", id);
+        const CheckBoxElement: HTMLInputElement = document.createElement("input")
+        CheckBoxElement.type = "checkbox";
+        CheckBoxElement.name=task.name;
+        CheckBoxElement.id = id;
+        CheckBoxElement.checked = task.done;
+        CheckBoxElement.addEventListener("change",() => {
+            task.done = !task.done;
+        })
+    
+        taskElement.appendChild(labelElement);
+        taskElement.appendChild(CheckBoxElement);
+        taskContainerElement.appendChild(taskElement);
     });
 
 };
