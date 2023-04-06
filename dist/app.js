@@ -1,6 +1,7 @@
 const taskNameInputElement = document.querySelector("#name");
 const addButtonElement = document.querySelector("button");
 const taskContainerElement = document.querySelector(".tasks");
+const categories = ["General", "work", "sport", "hobby", "JS"];
 const tasks = [
     {
         name: "nakramienia kota",

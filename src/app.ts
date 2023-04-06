@@ -6,6 +6,7 @@ interface Task {
     name:string;
     done:boolean;
 }
+const categories:string[] = ["General", "work", "sport","hobby","JS" ]
 
 const tasks:Task[] = [
     {
