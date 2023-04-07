@@ -6,16 +6,23 @@ const tasks = [
     {
         name: "nakramienia kota",
         done: false,
-        categoty: "work"
-    }, {
+        categoty: "general",
+    },
+    {
+        name: "nakramienia kota",
+        done: false,
+        categoty: "work",
+    },
+    {
         name: "zrobic coś",
         done: true,
         categoty: "gym",
-    }, {
+    },
+    {
         name: "programowanie",
         done: false,
         categoty: "JS",
-    }
+    },
 ];
 const render = () => {
     taskContainerElement.innerHTML = "";

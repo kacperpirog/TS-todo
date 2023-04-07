@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-     "compile" : "tsc --watch"
+    "compile": "tsc --watch"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "prettier": "2.8.7"
+  }
 }
