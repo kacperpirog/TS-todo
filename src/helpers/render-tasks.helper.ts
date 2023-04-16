@@ -1,6 +1,9 @@
 import { Task } from "../types/types";
 
-export const render = (tasks: Task[], taskContainerElement: HTMLElement) => {
+export const renderTasks = (
+  tasks: Task[],
+  taskContainerElement: HTMLElement
+) => {
   taskContainerElement.innerHTML = "";
   tasks.forEach((task, index) => {
     const taskElement: HTMLElement = document.createElement("li");

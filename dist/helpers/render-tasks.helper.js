@@ -1,4 +1,4 @@
-export const render = (tasks, taskContainerElement) => {
+export const renderTasks = (tasks, taskContainerElement) => {
     taskContainerElement.innerHTML = "";
     tasks.forEach((task, index) => {
         const taskElement = document.createElement("li");

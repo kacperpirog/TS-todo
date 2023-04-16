@@ -1,5 +1,5 @@
 import { renderCategories } from "./helpers/render-categories.helpers.js";
-import { render } from "./helpers/render-tasks.helper.js";
+import { renderTasks } from "./helpers/render-tasks.helper.js";
 import { Category, Task } from "./types/types";
 
 const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
@@ -38,6 +38,10 @@ const tasks: Task[] = [
 const addTask = (task: Task) => {
   tasks.push(task);
 };
+
+const updateSelectCategory = (newCategory: Category) => {
+  selectedCategory = newCategory;
+};
 addButtonElement.addEventListener("click", (e: Event) => {
   e.preventDefault();
   addTask({
@@ -45,8 +49,8 @@ addButtonElement.addEventListener("click", (e: Event) => {
     done: false,
     category: selectedCategory,
   });
-  render(tasks, taskContainerElement);
+  renderTasks(tasks, taskContainerElement);
 });
-renderCategories(categories, categoriesContainerElement, selectedCategory);
+renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 addTask({ name: "gitarra", category: "JS", done: false });
-render(tasks, taskContainerElement);
+renderTasks(tasks, taskContainerElement);
