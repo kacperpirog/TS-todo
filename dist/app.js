@@ -27,10 +27,6 @@ const tasks = [
 const render = () => {
     taskContainerElement.innerHTML = "";
     tasks.forEach((task, index) => {
-        //         <li>
-        // <label for="task-1">śmieci</label>
-        // <input type="checkbox" id="task-1" name="smieci"/>
-        // </li>
         const taskElement = document.createElement("li");
         if (task.categoty) {
             taskElement.classList.add(task.categoty);
@@ -56,8 +52,15 @@ const addTask = (task) => {
     tasks.push(task);
 };
 addButtonElement.addEventListener("click", (e) => {
+    const selectRadioElement = document.querySelector("input[type='radio']:chceked");
+    const selectCategory = selectRadioElement.value;
     e.preventDefault();
-    addTask({ name: taskNameInputElement.value, done: false });
+    addTask({
+        name: taskNameInputElement.value,
+        done: false,
+        categoty: selectCategory,
+    });
     render();
 });
+addTask({ name: "zrobić kaltkę", categoty: "JS", done: false });
 render();

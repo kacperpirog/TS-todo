@@ -2,10 +2,12 @@ const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
 const addButtonElement: HTMLButtonElement = document.querySelector("button");
 const taskContainerElement: HTMLElement = document.querySelector(".tasks");
 
+type Category = "general" | "work" | "gym" | "hobby" | "JS";
+
 interface Task {
   name: string;
   done: boolean;
-  categoty?: string;
+  categoty?: Category;
 }
 const categories: string[] = ["general", "work", "gym", "hobby", "JS"];
 
@@ -35,10 +37,6 @@ const tasks: Task[] = [
 const render = () => {
   taskContainerElement.innerHTML = "";
   tasks.forEach((task, index) => {
-    //         <li>
-    // <label for="task-1">śmieci</label>
-    // <input type="checkbox" id="task-1" name="smieci"/>
-    // </li>
     const taskElement: HTMLElement = document.createElement("li");
     if (task.categoty) {
       taskElement.classList.add(task.categoty);
@@ -67,9 +65,17 @@ const addTask = (task: Task) => {
   tasks.push(task);
 };
 addButtonElement.addEventListener("click", (e: Event) => {
+  const selectRadioElement: HTMLInputElement = document.querySelector(
+    "input[type='radio']:chceked"
+  );
+  const selectCategory: Category = selectRadioElement.value as Category;
   e.preventDefault();
-  addTask({ name: taskNameInputElement.value, done: false });
+  addTask({
+    name: taskNameInputElement.value,
+    done: false,
+    categoty: selectCategory,
+  });
   render();
 });
-
+addTask({ name: "zrobić kaltkę", categoty: "JS", done: false });
 render();
