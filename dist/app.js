@@ -1,35 +1,36 @@
 const taskNameInputElement = document.querySelector("#name");
 const addButtonElement = document.querySelector("button");
 const taskContainerElement = document.querySelector(".tasks");
+const categoriesConteinerElement = document.querySelector(".categories");
 const categories = ["general", "work", "gym", "hobby", "JS"];
 const tasks = [
     {
         name: "nakramienia kota",
         done: false,
-        categoty: "general",
+        category: "general",
     },
     {
         name: "nakramienia kota",
         done: false,
-        categoty: "work",
+        category: "work",
     },
     {
         name: "zrobic coś",
         done: true,
-        categoty: "gym",
+        category: "gym",
     },
     {
         name: "programowanie",
         done: false,
-        categoty: "JS",
+        category: "JS",
     },
 ];
 const render = () => {
     taskContainerElement.innerHTML = "";
     tasks.forEach((task, index) => {
         const taskElement = document.createElement("li");
-        if (task.categoty) {
-            taskElement.classList.add(task.categoty);
+        if (task.category) {
+            taskElement.classList.add(task.category);
         }
         const id = `task-${index}`;
         const labelElement = document.createElement("label");
@@ -48,6 +49,30 @@ const render = () => {
         taskContainerElement.appendChild(taskElement);
     });
 };
+const renderCategory = () => {
+    //   <li>
+    //   <input
+    //     type="radio"
+    //     name="category"
+    //     value="general"
+    //     id="category-general"
+    //   />
+    //   <label for="category-general">general</label>
+    // </li>
+    categories.forEach((category) => {
+        const categoryElemet = document.createElement("li");
+        const radioImputElement = document.createElement("input");
+        radioImputElement.type = "radio";
+        radioImputElement.name = "category";
+        radioImputElement.value = category;
+        radioImputElement.id = `category-${category}`;
+        categoryElemet.appendChild(radioImputElement);
+        const labelElement = document.createElement("label");
+        labelElement.setAttribute("for", `category${category}`);
+        labelElement.innerHTML = category;
+        categoriesConteinerElement.appendChild(categoryElemet);
+    });
+};
 const addTask = (task) => {
     tasks.push(task);
 };
@@ -58,9 +83,10 @@ addButtonElement.addEventListener("click", (e) => {
     addTask({
         name: taskNameInputElement.value,
         done: false,
-        categoty: selectCategory,
+        category: selectCategory,
     });
     render();
 });
-addTask({ name: "zrobić kaltkę", categoty: "JS", done: false });
+renderCategory();
+addTask({ name: "gitarra", category: "JS", done: false });
 render();
