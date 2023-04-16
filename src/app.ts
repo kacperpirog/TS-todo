@@ -1,3 +1,4 @@
+import { renderCategories } from "./helpers/render-categories.helpers.js";
 import { render } from "./helpers/render-tasks.helper.js";
 import { Category, Task } from "./types/types";
 
@@ -34,30 +35,6 @@ const tasks: Task[] = [
   },
 ];
 
-const renderCategories = () => {
-  categories.forEach((category) => {
-    const categoryElement: HTMLElement = document.createElement("li");
-
-    const radioInputElement: HTMLInputElement = document.createElement("input");
-    radioInputElement.type = "radio";
-    radioInputElement.name = "category";
-    radioInputElement.value = category;
-    radioInputElement.id = `category-${category}`;
-    radioInputElement.addEventListener("change", () => {
-      selectedCategory = category;
-    });
-
-    const labelElement: HTMLLabelElement = document.createElement("label");
-    labelElement.setAttribute("for", `category-${category}`);
-    labelElement.innerText = category;
-
-    categoryElement.appendChild(radioInputElement);
-    categoryElement.appendChild(labelElement);
-
-    categoriesContainerElement.appendChild(categoryElement);
-  });
-};
-
 const addTask = (task: Task) => {
   tasks.push(task);
 };
@@ -70,6 +47,6 @@ addButtonElement.addEventListener("click", (e: Event) => {
   });
   render(tasks, taskContainerElement);
 });
-renderCategories();
+renderCategories(categories, categoriesContainerElement, selectedCategory);
 addTask({ name: "gitarra", category: "JS", done: false });
 render(tasks, taskContainerElement);
