@@ -1,3 +1,4 @@
+import { render } from "./helpers/render-tasks.helper.js";
 const taskNameInputElement = document.querySelector("#name");
 const addButtonElement = document.querySelector("button");
 const taskContainerElement = document.querySelector(".tasks");
@@ -26,30 +27,6 @@ const tasks = [
         category: "JS",
     },
 ];
-const render = () => {
-    taskContainerElement.innerHTML = "";
-    tasks.forEach((task, index) => {
-        const taskElement = document.createElement("li");
-        if (task.category) {
-            taskElement.classList.add(task.category);
-        }
-        const id = `task-${index}`;
-        const labelElement = document.createElement("label");
-        labelElement.innerHTML = task.name;
-        labelElement.setAttribute("for", id);
-        const CheckBoxElement = document.createElement("input");
-        CheckBoxElement.type = "checkbox";
-        CheckBoxElement.name = task.name;
-        CheckBoxElement.id = id;
-        CheckBoxElement.checked = task.done;
-        CheckBoxElement.addEventListener("change", () => {
-            task.done = !task.done;
-        });
-        taskElement.appendChild(labelElement);
-        taskElement.appendChild(CheckBoxElement);
-        taskContainerElement.appendChild(taskElement);
-    });
-};
 const renderCategories = () => {
     categories.forEach((category) => {
         const categoryElement = document.createElement("li");
@@ -79,8 +56,8 @@ addButtonElement.addEventListener("click", (e) => {
         done: false,
         category: selectedCategory,
     });
-    render();
+    render(tasks, taskContainerElement);
 });
 renderCategories();
 addTask({ name: "gitarra", category: "JS", done: false });
-render();
+render(tasks, taskContainerElement);

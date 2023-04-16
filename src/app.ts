@@ -1,3 +1,6 @@
+import { render } from "./helpers/render-tasks.helper.js";
+import { Category, Task } from "./types/types";
+
 const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
 const addButtonElement: HTMLButtonElement = document.querySelector("button");
 const taskContainerElement: HTMLElement = document.querySelector(".tasks");
@@ -6,13 +9,6 @@ const categoriesContainerElement: HTMLElement =
 
 let selectedCategory: Category;
 
-type Category = "general" | "work" | "gym" | "hobby" | "JS";
-
-interface Task {
-  name: string;
-  done: boolean;
-  category?: Category;
-}
 const categories: Category[] = ["general", "work", "gym", "hobby", "JS"];
 
 const tasks: Task[] = [
@@ -37,34 +33,6 @@ const tasks: Task[] = [
     category: "JS",
   },
 ];
-
-const render = () => {
-  taskContainerElement.innerHTML = "";
-  tasks.forEach((task, index) => {
-    const taskElement: HTMLElement = document.createElement("li");
-    if (task.category) {
-      taskElement.classList.add(task.category);
-    }
-
-    const id: string = `task-${index}`;
-
-    const labelElement: HTMLLabelElement = document.createElement("label");
-    labelElement.innerHTML = task.name;
-    labelElement.setAttribute("for", id);
-    const CheckBoxElement: HTMLInputElement = document.createElement("input");
-    CheckBoxElement.type = "checkbox";
-    CheckBoxElement.name = task.name;
-    CheckBoxElement.id = id;
-    CheckBoxElement.checked = task.done;
-    CheckBoxElement.addEventListener("change", () => {
-      task.done = !task.done;
-    });
-
-    taskElement.appendChild(labelElement);
-    taskElement.appendChild(CheckBoxElement);
-    taskContainerElement.appendChild(taskElement);
-  });
-};
 
 const renderCategories = () => {
   categories.forEach((category) => {
@@ -100,8 +68,8 @@ addButtonElement.addEventListener("click", (e: Event) => {
     done: false,
     category: selectedCategory,
   });
-  render();
+  render(tasks, taskContainerElement);
 });
 renderCategories();
 addTask({ name: "gitarra", category: "JS", done: false });
-render();
+render(tasks, taskContainerElement);
