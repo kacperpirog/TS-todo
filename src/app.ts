@@ -1,8 +1,10 @@
 const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
 const addButtonElement: HTMLButtonElement = document.querySelector("button");
 const taskContainerElement: HTMLElement = document.querySelector(".tasks");
-const categoriesConteinerElement: HTMLElement =
+const categoriesContainerElement: HTMLElement =
   document.querySelector(".categories");
+
+let selectedCategory: Category;
 
 type Category = "general" | "work" | "gym" | "hobby" | "JS";
 
@@ -20,7 +22,7 @@ const tasks: Task[] = [
     category: "general",
   },
   {
-    name: "nakramienia kota",
+    name: "i psa",
     done: false,
     category: "work",
   },
@@ -64,31 +66,27 @@ const render = () => {
   });
 };
 
-const renderCategory = () => {
-  //   <li>
-  //   <input
-  //     type="radio"
-  //     name="category"
-  //     value="general"
-  //     id="category-general"
-  //   />
-  //   <label for="category-general">general</label>
-  // </li>
+const renderCategories = () => {
   categories.forEach((category) => {
-    const categoryElemet: HTMLElement = document.createElement("li");
+    const categoryElement: HTMLElement = document.createElement("li");
 
-    const radioImputElement: HTMLInputElement = document.createElement("input");
-    radioImputElement.type = "radio";
-    radioImputElement.name = "category";
-    radioImputElement.value = category;
-    radioImputElement.id = `category-${category}`;
-    categoryElemet.appendChild(radioImputElement);
+    const radioInputElement: HTMLInputElement = document.createElement("input");
+    radioInputElement.type = "radio";
+    radioInputElement.name = "category";
+    radioInputElement.value = category;
+    radioInputElement.id = `category-${category}`;
+    radioInputElement.addEventListener("change", () => {
+      selectedCategory = category;
+    });
 
     const labelElement: HTMLLabelElement = document.createElement("label");
-    labelElement.setAttribute("for", `category${category}`);
-    labelElement.innerHTML = category;
+    labelElement.setAttribute("for", `category-${category}`);
+    labelElement.innerText = category;
 
-    categoriesConteinerElement.appendChild(categoryElemet);
+    categoryElement.appendChild(radioInputElement);
+    categoryElement.appendChild(labelElement);
+
+    categoriesContainerElement.appendChild(categoryElement);
   });
 };
 
@@ -96,18 +94,14 @@ const addTask = (task: Task) => {
   tasks.push(task);
 };
 addButtonElement.addEventListener("click", (e: Event) => {
-  const selectRadioElement: HTMLInputElement = document.querySelector(
-    "input[type='radio']:chceked"
-  );
-  const selectCategory: Category = selectRadioElement.value as Category;
   e.preventDefault();
   addTask({
     name: taskNameInputElement.value,
     done: false,
-    category: selectCategory,
+    category: selectedCategory,
   });
   render();
 });
-renderCategory();
+renderCategories();
 addTask({ name: "gitarra", category: "JS", done: false });
 render();
