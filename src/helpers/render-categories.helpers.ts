@@ -1,16 +1,19 @@
-import { Category } from "../types/types";
+import { Category } from "../types/types.js";
 
 const handleCategoryChange = (category: Category) => {
-  if (category === "general") {
+  if (category === Category.GENERAL) {
     console.log("zmiana kategori na general ");
-  } else if (category === "work") {
+  } else if (category === Category.GYM) {
     alert("Lecisz na siłke ");
-  } else if (category === "hobby") {
+  } else if (category === Category.HOBBY) {
     document.body.style.background = "red";
-  } else if (category === "gym") {
-    document.body.style.background = "red";
-  } else if (category === "JS") {
-    document.body.style.background = "red";
+  } else if (category === Category.WORK) {
+    document.body.style.background = "gray";
+  } else if (category === Category.JS) {
+    document.body.style.background = "blue";
+  } else {
+    const never: never = category;
+    console.log(never);
   }
 };
 
@@ -29,6 +32,7 @@ export const renderCategories = (
     radioInputElement.id = `category-${category}`;
     radioInputElement.addEventListener("change", () => {
       inputChangeCallback(category);
+      handleCategoryChange(category);
     });
 
     const labelElement: HTMLLabelElement = document.createElement("label");
