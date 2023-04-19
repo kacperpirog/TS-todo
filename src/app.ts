@@ -1,4 +1,4 @@
-import { TaskClass } from "./classes/task";
+import { TaskClass } from "./classes/task.js";
 import { renderCategories } from "./helpers/render-categories.helpers.js";
 import { renderTasks } from "./helpers/render-tasks.helper.js";
 import { Category, Task } from "./types/types.js";
@@ -72,6 +72,6 @@ renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 
 renderTasks(tasks, taskContainerElement);
 
-const taskClassInstance = new TaskClass();
+const taskClassInstance = new TaskClass("smiecie", true);
 
 console.log(taskClassInstance);

@@ -1,7 +1,7 @@
 export class TaskClass {
-    constructor() {
+    constructor(name, done) {
         this.name = "nowe zadnaie ";
         this.done = true;
+        console.log("construktor!");
     }
 }
-const task = new TaskClass();
