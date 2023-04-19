@@ -1,9 +1,23 @@
 import { Category } from "../types/types";
 
+const handleCategoryChange = (category: Category) => {
+  if (category === "general") {
+    console.log("zmiana kategori na general ");
+  } else if (category === "work") {
+    alert("Lecisz na siłke ");
+  } else if (category === "hobby") {
+    document.body.style.background = "red";
+  } else if (category === "gym") {
+    document.body.style.background = "red";
+  } else if (category === "JS") {
+    document.body.style.background = "red";
+  }
+};
+
 export const renderCategories = (
   categories: Category[],
   categoriesContainerElement: HTMLElement,
-  inputChangeCallback
+  inputChangeCallback: (category: Category) => void
 ) => {
   categories.forEach((category) => {
     const categoryElement: HTMLElement = document.createElement("li");
