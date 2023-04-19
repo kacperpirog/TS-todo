@@ -57,6 +57,16 @@ addButtonElement.addEventListener("click", (e: Event) => {
   });
   renderTasks(tasks, taskContainerElement);
 });
+type TaskAsTuple = [string, Category, boolean];
+
+const task: TaskAsTuple = ["baldy", Category.HOBBY, false];
+
+const taskName = task[0];
+const taskCategory = task[1];
+const taskDoneStatus = task[2];
+
+addTask({ name: taskName, category: taskCategory, done: taskDoneStatus });
+
 renderCategories(categories, categoriesContainerElement, updateSelectCategory);
-addTask({ name: "gitarra", category: Category.JS, done: false });
+
 renderTasks(tasks, taskContainerElement);
