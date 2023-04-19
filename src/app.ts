@@ -1,4 +1,4 @@
-import { TaskClass } from "./classes/task.js";
+import { Task } from "./classes/task.js";
 import { renderCategories } from "./helpers/render-categories.helpers.js";
 import { renderTasks } from "./helpers/render-tasks.helper.js";
 import { Category, Task } from "./types/types.js";
@@ -20,6 +20,8 @@ const categories: Category[] = [
 ];
 
 const tasks: Task[] = [
+  new Task("nakramienia kota",false, Category.GENERAL)
+
   {
     name: "nakramienia kota",
     done: false,
@@ -74,4 +76,4 @@ renderTasks(tasks, taskContainerElement);
 
 const taskClassInstance = new TaskClass("smiecie", true);
 
-console.log(taskClassInstance);
+taskClassInstance.LogCreationDate("!");

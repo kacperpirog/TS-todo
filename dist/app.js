@@ -1,4 +1,4 @@
-import { TaskClass } from "./classes/task.js";
+import { Task } from "./classes/task.js";
 import { renderCategories } from "./helpers/render-categories.helpers.js";
 import { renderTasks } from "./helpers/render-tasks.helper.js";
 import { Category } from "./types/types.js";
@@ -15,6 +15,7 @@ const categories = [
     Category.JS,
 ];
 const tasks = [
+    new Task("nakramienia kota", false, Category.GENERAL),
     {
         name: "nakramienia kota",
         done: false,
@@ -59,4 +60,4 @@ addTask({ name: taskName, category: taskCategory, done: taskDoneStatus });
 renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 renderTasks(tasks, taskContainerElement);
 const taskClassInstance = new TaskClass("smiecie", true);
-console.log(taskClassInstance);
+taskClassInstance.LogCreationDate("!");
