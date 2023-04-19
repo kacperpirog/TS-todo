@@ -1,7 +1,7 @@
 import { Task } from "./classes/task.js";
 import { renderCategories } from "./helpers/render-categories.helpers.js";
 import { renderTasks } from "./helpers/render-tasks.helper.js";
-import { Category, Task } from "./types/types.js";
+import { Category } from "./types/types.js";
 
 const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
 const addButtonElement: HTMLButtonElement = document.querySelector("button");
@@ -20,28 +20,10 @@ const categories: Category[] = [
 ];
 
 const tasks: Task[] = [
-  new Task("nakramienia kota",false, Category.GENERAL)
-
-  {
-    name: "nakramienia kota",
-    done: false,
-    category: Category.GENERAL,
-  },
-  {
-    name: "i psa",
-    done: false,
-    category: Category.WORK,
-  },
-  {
-    name: "zrobic coś",
-    done: true,
-    category: Category.GYM,
-  },
-  {
-    name: "programowanie",
-    done: false,
-    category: Category.WORK,
-  },
+  new Task("nakramienia kota", false, Category.GENERAL),
+  new Task("i psa", false, Category.WORK),
+  new Task("zrobic coś", true, Category.GENERAL),
+  new Task("programowanie", false),
 ];
 
 const addTask = (task: Task) => {
@@ -53,11 +35,13 @@ const updateSelectCategory = (newCategory: Category) => {
 };
 addButtonElement.addEventListener("click", (e: Event) => {
   e.preventDefault();
-  addTask({
-    name: taskNameInputElement.value,
-    done: false,
-    category: selectedCategory,
-  });
+  const newTask: Task = new Task(
+    taskNameInputElement.value,
+    false,
+    selectedCategory
+  );
+  addTask(newTask);
+  newTask.LogCreationDate("!!!");
   renderTasks(tasks, taskContainerElement);
 });
 type TaskAsTuple = [string, Category, boolean];
@@ -68,12 +52,10 @@ const taskName = task[0];
 const taskCategory = task[1];
 const taskDoneStatus = task[2];
 
-addTask({ name: taskName, category: taskCategory, done: taskDoneStatus });
-
 renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 
 renderTasks(tasks, taskContainerElement);
 
-const taskClassInstance = new TaskClass("smiecie", true);
+const taskClassInstance = new Task("smiecie", true);
 
 taskClassInstance.LogCreationDate("!");

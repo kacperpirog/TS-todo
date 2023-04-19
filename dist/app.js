@@ -16,26 +16,9 @@ const categories = [
 ];
 const tasks = [
     new Task("nakramienia kota", false, Category.GENERAL),
-    {
-        name: "nakramienia kota",
-        done: false,
-        category: Category.GENERAL,
-    },
-    {
-        name: "i psa",
-        done: false,
-        category: Category.WORK,
-    },
-    {
-        name: "zrobic coś",
-        done: true,
-        category: Category.GYM,
-    },
-    {
-        name: "programowanie",
-        done: false,
-        category: Category.WORK,
-    },
+    new Task("i psa", false, Category.WORK),
+    new Task("zrobic coś", true, Category.GENERAL),
+    new Task("programowanie", false),
 ];
 const addTask = (task) => {
     tasks.push(task);
@@ -45,19 +28,16 @@ const updateSelectCategory = (newCategory) => {
 };
 addButtonElement.addEventListener("click", (e) => {
     e.preventDefault();
-    addTask({
-        name: taskNameInputElement.value,
-        done: false,
-        category: selectedCategory,
-    });
+    const newTask = new Task(taskNameInputElement.value, false, selectedCategory);
+    addTask(newTask);
+    newTask.LogCreationDate("!!!");
     renderTasks(tasks, taskContainerElement);
 });
 const task = ["baldy", Category.HOBBY, false];
 const taskName = task[0];
 const taskCategory = task[1];
 const taskDoneStatus = task[2];
-addTask({ name: taskName, category: taskCategory, done: taskDoneStatus });
 renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 renderTasks(tasks, taskContainerElement);
-const taskClassInstance = new TaskClass("smiecie", true);
+const taskClassInstance = new Task("smiecie", true);
 taskClassInstance.LogCreationDate("!");
