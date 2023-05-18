@@ -58,4 +58,3 @@ renderTasks(tasks, taskContainerElement);
 
 const taskClassInstance = new Task("smiecie", true);
 
-taskClassInstance.LogCreationDate("!");

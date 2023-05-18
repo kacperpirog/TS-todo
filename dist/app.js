@@ -40,4 +40,3 @@ const taskDoneStatus = task[2];
 renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 renderTasks(tasks, taskContainerElement);
 const taskClassInstance = new Task("smiecie", true);
-taskClassInstance.LogCreationDate("!");
