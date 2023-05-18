@@ -20,9 +20,9 @@ const categories: Category[] = [
 ];
 
 const tasks: Task[] = [
-  new Task("nakramienia kota", false, Category.GENERAL),
-  new Task("i psa", false, Category.WORK),
-  new Task("zrobic coś", true, Category.GENERAL),
+  new Task("feed the cat", false, Category.GENERAL),
+  new Task("feed the dog", false, Category.WORK),
+  new Task("do something ", true, Category.GENERAL),
   new Task("programowanie", false),
 ];
 
@@ -57,4 +57,3 @@ renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 renderTasks(tasks, taskContainerElement);
 
 const taskClassInstance = new Task("smiecie", true);
-
