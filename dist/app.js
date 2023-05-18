@@ -17,7 +17,7 @@ const categories = [
 const tasks = [
     new Task("feed the cat", false, Category.GENERAL),
     new Task("feed the dog", false, Category.WORK),
-    new Task("do something ", true, Category.GENERAL),
+    new Task("do something ", true, Category.HOBBY),
     new Task("coding", false),
 ];
 const addTask = (task) => {

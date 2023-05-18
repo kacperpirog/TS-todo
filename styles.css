@@ -73,22 +73,35 @@ button:hover {
   margin-left: 8px;
 }
 
-.gym {
-  background: linear-gradient(45deg, #ed1255, #e5e5e5);
+.general {
+  background: linear-gradient(45deg, #7912ed, #e5e5e5);
   list-style: circle;
   font-size: 18px;
+  color: #fff;
+}
+
+.gym {
+  background: linear-gradient(45deg, #12ed93, #e5e5e5);
+  list-style: circle;
+  font-size: 18px;
+  color: #fff;
 }
 
 .hobby {
-  color: darkgoldenrod;
+  background: linear-gradient(45deg, #ed1255, #e5e5e5);
   font-size: 18px;
+  color: #fff;
 }
 
 .work {
   text-decoration: underline;
   font-size: 18px;
+  background: linear-gradient(45deg, #12ed93, #e5e5e5);
+  color: #fff;
 }
 .JS {
   color: #d434f6;
   font-size: 25px;
+  color: #fff;
+  background: linear-gradient(45deg, #ed5a12, #e5e5e5);
 }
