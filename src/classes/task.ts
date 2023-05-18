@@ -19,6 +19,6 @@ export class Task {
   }
 
   LogCreationDate(extra: string) {
-    console.log(`taks został stworzony" ${this.createAt} ${extra || ""}`);
+    console.log(`task has been created" ${this.createAt} ${extra || ""}`);
   }
 }

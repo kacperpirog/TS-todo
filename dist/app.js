@@ -15,10 +15,10 @@ const categories = [
     Category.JS,
 ];
 const tasks = [
-    new Task("nakramienia kota", false, Category.GENERAL),
-    new Task("i psa", false, Category.WORK),
-    new Task("zrobic coś", true, Category.GENERAL),
-    new Task("programowanie", false),
+    new Task("feed the cat", false, Category.GENERAL),
+    new Task("feed the dog", false, Category.WORK),
+    new Task("do something ", true, Category.GENERAL),
+    new Task("coding", false),
 ];
 const addTask = (task) => {
     tasks.push(task);
@@ -39,4 +39,4 @@ const taskCategory = task[1];
 const taskDoneStatus = task[2];
 renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 renderTasks(tasks, taskContainerElement);
-const taskClassInstance = new Task("smiecie", true);
+const taskClassInstance = new Task("gym", true);

@@ -2,15 +2,15 @@ import { Category } from "../types/types.js";
 
 const handleCategoryChange = (category: Category) => {
   if (category === Category.GENERAL) {
-    console.log("zmiana kategori na general ");
+    document.body.style.background = "linear-gradient(45deg, #7912ed, #e5e5e5)";
   } else if (category === Category.GYM) {
-    alert("Lecisz na siłke ");
+    alert("go to the gym nowwww!!!");
   } else if (category === Category.HOBBY) {
-    document.body.style.background = "red";
+    document.body.style.background = "linear-gradient(45deg, #ed1255, #e5e5e5)";
   } else if (category === Category.WORK) {
-    document.body.style.background = "gray";
+    document.body.style.background = "linear-gradient(45deg, #12ed93, #e5e5e5)";
   } else if (category === Category.JS) {
-    document.body.style.background = "blue";
+    document.body.style.background = "linear-gradient(45deg, #ed5a12, #e5e5e5)";
   } else {
     const never: never = category;
     console.log(never);

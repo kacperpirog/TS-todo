@@ -23,7 +23,7 @@ const tasks: Task[] = [
   new Task("feed the cat", false, Category.GENERAL),
   new Task("feed the dog", false, Category.WORK),
   new Task("do something ", true, Category.GENERAL),
-  new Task("programowanie", false),
+  new Task("coding", false),
 ];
 
 const addTask = (task: Task) => {
@@ -56,4 +56,4 @@ renderCategories(categories, categoriesContainerElement, updateSelectCategory);
 
 renderTasks(tasks, taskContainerElement);
 
-const taskClassInstance = new Task("smiecie", true);
+const taskClassInstance = new Task("gym", true);
